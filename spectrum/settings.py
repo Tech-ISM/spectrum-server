@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'otp',
     'register',
     'customs',
+    'event',
 ]
 
 MIDDLEWARE_CLASSES = [

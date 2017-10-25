@@ -17,6 +17,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from event.views import get_events_list
 from otp.views import send_otp, verify_otp
 from splash_screen.views import splash_screen
 
@@ -25,5 +26,6 @@ urlpatterns = [
     url(r'^create_user/$', send_otp),
     url(r'^verify_otp/$', verify_otp),
     url(r'^is_update_available/$', splash_screen),
+    url(r'^get_events_list/$', get_events_list),
 
 ]
