@@ -21,7 +21,7 @@ def get_events_list(request):
             response_json["event_list"] = []
             for o in EventData.objects.filter(day=int(day)):
                 temp_json = {"event_id": int(o.id), "name": str(o.name),
-                             "image_url": request.scheme + '://' + request.get_host() + '/media/event/' + str(o.image),
+                             "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(o.image),
                              }
                 response_json["event_list"].append(temp_json)
         except Exception as e:
