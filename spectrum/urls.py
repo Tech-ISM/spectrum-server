@@ -24,6 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^create_user/$', send_otp),
     url(r'^verify_otp/$', verify_otp),
-    url(r'^splash_screen/$', splash_screen),
+    url(r'^is_update_available/$', splash_screen),
 
 ]
