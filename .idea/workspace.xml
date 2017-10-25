@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3d669d8-e744-480d-88bd-c104282e86e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spectrum/settings.py" afterPath="$PROJECT_DIR$/spectrum/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/event/models.py" afterPath="$PROJECT_DIR$/event/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spectrum/urls.py" afterPath="$PROJECT_DIR$/spectrum/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +19,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spectrum/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="531">
@@ -31,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/event/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
-              <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+              <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="46" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -42,8 +44,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/event/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="333">
+              <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -63,14 +65,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spectrum/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="28" column="39" lean-forward="false" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-              <folding>
-                <element signature="e#697#729#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="279">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,10 +93,10 @@
         <option value="$PROJECT_DIR$/register/models.py" />
         <option value="$PROJECT_DIR$/splash_screen/views.py" />
         <option value="$PROJECT_DIR$/event/admin.py" />
-        <option value="$PROJECT_DIR$/spectrum/urls.py" />
-        <option value="$PROJECT_DIR$/event/models.py" />
         <option value="$PROJECT_DIR$/event/views.py" />
         <option value="$PROJECT_DIR$/spectrum/settings.py" />
+        <option value="$PROJECT_DIR$/event/models.py" />
+        <option value="$PROJECT_DIR$/spectrum/urls.py" />
       </list>
     </option>
   </component>
@@ -108,7 +108,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1366" />
-    <option name="y" value="792" />
+    <option name="y" value="24" />
     <option name="width" value="1366" />
     <option name="height" value="744" />
   </component>
@@ -471,7 +471,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="792" width="1366" height="744" extended-state="6" />
+    <frame x="1366" y="24" width="1366" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33235726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -517,9 +517,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding>
-            <element signature="e#697#729#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -599,9 +597,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="e#697#729#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -773,12 +769,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spectrum/urls.py">
+    <entry file="file://$PROJECT_DIR$/spectrum/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="28" column="39" lean-forward="false" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+        <state relative-caret-position="531">
+          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/event/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="46" />
           <folding>
-            <element signature="e#697#729#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/event/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -793,30 +807,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/event/models.py">
+    <entry file="file://$PROJECT_DIR$/spectrum/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/event/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spectrum/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        <state relative-caret-position="279">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>

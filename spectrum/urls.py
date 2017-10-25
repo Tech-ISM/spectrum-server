@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 
 from event.views import get_events_list
 from otp.views import send_otp, verify_otp
@@ -29,3 +31,5 @@ urlpatterns = [
     url(r'^get_events_list/$', get_events_list),
 
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
