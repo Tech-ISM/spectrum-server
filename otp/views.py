@@ -16,11 +16,12 @@ def send_otp(request):
         response_json = {}
         try:
             name = str(request.POST.get('name'))
-            mobile = str(request.POST.get('mobile'))
+            mobile = str(request.POST.get('mobile_no'))
+            email = str(request.POST.get('email'))
             print(name)
             print(mobile)
             otp = random.randint(1000, 9999)
-            msg = 'Welcome to Brand Store App. Please use OTP: ' + str(otp)
+            msg = 'Welcome to Spectrum App. Please use OTP: ' + str(otp)
             send_sms(mobile, msg)
             print('Otp Sent')
             try:
@@ -31,7 +32,7 @@ def send_otp(request):
                 # print('old user')
                 user_list = UserData.objects.get(mobile=str(mobile))
                 setattr(user_list, 'name', name)
-                setattr(user_list, 'city', "")
+                setattr(user_list, 'email', email)
                 user_list.save()
                 print('User Details Updated')
                 try:
@@ -41,13 +42,11 @@ def send_otp(request):
                 except Exception as e:
                     print (e)
                     OtpData.objects.create(mobile=str(mobile), otp=int(otp))
-
-
-
             except Exception as e:
                 OtpData.objects.create(mobile=str(mobile), otp=int(otp))
                 UserData.objects.create(
                     name=name,
+                    email=email,
                     mobile=str(mobile)
                 )
                 print('User Created')
@@ -83,7 +82,6 @@ def verify_otp(request):
             if user.exists():
                 for u in user:
                     u.delete()
-
             response_json['success'] = True
             response_json['message'] = 'Successful'
         else:

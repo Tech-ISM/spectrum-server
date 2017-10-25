@@ -17,6 +17,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from otp.views import send_otp, verify_otp
+from splash_screen.views import splash_screen
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^create_user/$', send_otp),
+    url(r'^verify_otp/$', verify_otp),
+    url(r'^splash_screen/$', splash_screen),
+
 ]
