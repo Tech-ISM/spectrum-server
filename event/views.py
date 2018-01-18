@@ -74,9 +74,10 @@ def get_user_events_list(request):
         try:
             for x, y in request.GET.items():
                 print(x, ":", y)
-            access_token = str(request.POST.get("access_token"))
-            decoded = jwt.decode(access_token, '810910', algorithms=['HS256'])
-            mobile = decoded[access_token]
+            access_token = str(request.GET.get("access_token"))
+            decoded = jwt.decode(access_token, '810810', algorithms=['HS256'])
+            mobile = decoded['mobile']
+            print (mobile)
             response_json["success"] = True
             response_json["message"] = " event_list recieved "
             response_json["event_list"] = []
@@ -97,6 +98,7 @@ def get_user_events_list(request):
     else:
         response_json['success'] = False
         response_json['message'] = "not get method"
+    print (response_json)
     return JsonResponse(response_json)
 
 
@@ -107,7 +109,7 @@ def change_event_participated_status(request):
         try:
             access_token = str(request.POST.get("access_token"))
             print('1')
-            decoded = jwt.decode(access_token, '810910', algorithms=['HS256'])
+            decoded = jwt.decode(access_token, '810810', algorithms=['HS256'])
             print('2')
             mobile = decoded[access_token]
             try:

@@ -1,6 +1,8 @@
 # Create your views here.
 from __future__ import print_function
 import random
+
+from event.models import EventData, UserEventData
 from .models import *
 from register.models import UserData
 from django.views.decorators.csrf import csrf_exempt
@@ -81,8 +83,17 @@ def verify_otp(request):
             if user.exists():
                 for u in user:
                     u.delete()
-            response_json['success'] = True
-            response_json['message'] = 'Successful'
+            try:
+                for o in EventData.objects.all():
+                    UserEventData.objects.create(user=UserData.objects.get(mobile=mobile),
+                                                 event=o,
+                                                 participated=0)
+                response_json['success'] = True
+                response_json['message'] = 'Successful'
+            except Exception as e:
+                print(str(e))
+                response_json['success'] = False
+                response_json['message'] = 'Something went wrong'+str(e)
         else:
             response_json['success'] = False
             response_json['message'] = 'Invalid Otp'
