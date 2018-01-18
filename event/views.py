@@ -54,7 +54,6 @@ def get_events_details(request):
             response_json["day"] = event_instance.day
             response_json["attendees"] = event_instance.attendees
             response_json["description"] = event_instance.description
-            response_json["facebook_url"] = event_instance.facebook_url
             response_json["message"] = "Event Details Received"
             response_json["success"] = True
         except Exception as e:
