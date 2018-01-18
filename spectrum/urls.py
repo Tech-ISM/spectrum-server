@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from event.views import get_events_list
+from event.views import get_events_list, change_event_participated_status
 from otp.views import send_otp, verify_otp
 from splash_screen.views import splash_screen
 
@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^verify_otp/$', verify_otp),
     url(r'^is_update_available/$', splash_screen),
     url(r'^get_events_list/$', get_events_list),
+    url(r'^user_events_list/$', get_events_list),
+    url(r'^change_event_participated_status/$', change_event_participated_status),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

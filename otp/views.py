@@ -51,7 +51,6 @@ def send_otp(request):
                 )
                 print('User Created')
                 print(e)
-
             response_json['success'] = True
             response_json['message'] = "Otp Sent Successfully"
             pass
