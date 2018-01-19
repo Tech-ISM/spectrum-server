@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'register',
     'customs',
     'event',
+    'notification',
 ]
 
 MIDDLEWARE_CLASSES = [

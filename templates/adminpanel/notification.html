@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>GST | Notification Panel</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/button/css/style.css" media="screen,projection"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109982357-1"></script>
+    <script>
+        var host = window.location.hostname;
+        if(host != "localhost" && host != "127.0.0.1"){
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-109982357-1');
+        }
+    </script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $("#AJAXloader").show().delay(400).queue(function (n) {
+            $(this).fadeOut();
+            n();
+        });
+        $('select').material_select();
+    });
+    function required()
+    {
+        var empt = document.forms["myForm"]["message"].value;
+        if (empt == "")
+        {
+            alert("Message cannot be empty");
+            return false;
+        }
+        else
+        {
+            var form = document.getElementById("myForm");
+            form.reset();
+            return true;
+        }
+    }
+</script>
+<body style="overflow-y:auto;background-color: #eeeeee">
+<div class="header" style="background-color: #654236">
+    <form method="GET" enctype="multipart/form-data">
+        <p style="background-color:#654236;float: left; width:100%;color:white;font-size: 2vmin; margin-top: 0;padding-right:1%;display: inline">
+            <span style="float: left;padding: 5px;"><img src="/media/media/welcome/GST_logo_1024x1024.png" style="height:12vmin;width:12vmin;"></span>
+        {% if user.is_authenticated %}
+            <span style="float: right;">
+                <a href="/adminpanel/home/"style="color: white">Home</a>
+                | Welcome <strong>{{ user.username }}</strong> |
+                <a href="/adminpanel/logout/" style="color: white">Logout</a></span>
+        {% endif %}
+        </p>
+    </form>
+</div>
+<div id="AJAXloader" style="position: fixed;width: 100%;height: 100%;top:0;left:0;right: 0;bottom: 0;background: rgba(0, 0, 0, 0) url('http://www.iucssm.org/images/loader.gif') no-repeat center center;z-index: 2;"></div>
+<div id="main">
+    <div id="Notification-Panel">
+        <div class="row">
+            <div class="col s12 m3"></div>
+            <div class="col s12 m6">
+                <div class="card white lighten-1">
+                    <div class="card-content">
+                        <h5 align="center">Enter Notification Details</h5>
+                        <form method="POST" action="#" autocomplete="off" enctype="multipart/form-data" name="myForm" onsubmit="return required()">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="input-field col s2"></div><div class="input-field col s8">
+                                <input name="title" id="title" type="text" class="validate" required>
+                                <label for="title"> Message Title</label>
+                            </div></div>
+                            <div class="row">
+                                <div class="input-field col s2"></div><div class="input-field col s8">
+                                <textarea id="message" name="message" class="materialize-textarea" required></textarea>
+                                <label for="message">Message description</label>
+                            </div>
+                            </div>
+{#                            <div class="row">#}
+{#                                <div class="input-field col s2"></div>#}
+{#                                <div class="input-field col s8">#}
+{#                                    <div class="file-field input-field" black>#}
+{#                                        <span>Upload Notification image</span>#}
+{#                                        <input type="file" name="myfile" id="myfile" accept="image/*">#}
+{#                                        <font color="black">#}
+{#                                            <div blue class="file-path-wrapper">#}
+{#                                                <input class="file-path validate" type="text" >#}
+{#                                            </div></font>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+                            <div class="row">
+                                <div class="input-field col s4"></div>
+                                <div class="input-field col s4">
+                                    <button class="btn" id="button" type="submit" name="submit" value="Send">
+                                        Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

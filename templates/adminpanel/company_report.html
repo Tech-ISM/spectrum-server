@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>GST | Notification Panel</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize/js/materialize.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/button/css/style.css" media="screen,projection"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.material.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.material.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"/>
+    <!--Custom CSS for datatable-->
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/datatable/style.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/company_report/css/style.css" media="screen,projection"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table_company_report').DataTable({
+                "columns": [
+                    { "data": "1" },
+                    { "data": "2" },
+                    { "data": "3" },
+                    { "data": "4" },
+                    { "data": "5" },
+                    { "data": "6" },
+                    { "data": "7" }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "bLengthChange": true,
+                dom: 'Blfrtip',
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            });
+        });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109982357-1"></script>
+    <script>
+        var host = window.location.hostname;
+        if(host != "localhost" && host != "127.0.0.1"){
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-109982357-1');
+        }
+    </script>
+</head>
+<body style="overflow-y:auto;background-color: #F7E9BC">
+<div class="header" style="background-color: #654236">
+    <form method="GET" enctype="multipart/form-data">
+        <p style="background-color:#654236;float: left; width:100%;color:white;font-size: 2vmin; margin-top: 0;padding-right:1%;display: inline">
+            <span style="float: left;padding: 5px;"><img src="/media/media/welcome/GST_logo_1024x1024.png" style="height:12vmin;width:12vmin;"></span>
+        {% if user.is_authenticated %}
+            <span style="float: right;">
+                <a href="/adminpanel/home/"style="color: white">Home</a>
+                | Welcome <strong>{{ user.username }}</strong> |
+                <a href="/adminpanel/logout/" style="color: white">Logout</a></span>
+        {% endif %}
+        </p>
+    </form>
+</div>
+<div class="row">
+    <div class="col s12 m10 l10 offset-l1 offset-m1">
+        <div class="card horizontal">
+            <table id="table_company_report" class="mdl-data-table centered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th width="5%">S.No.</th>
+                    <th>Company Name</th>
+                    <th>Mobile</th>
+                    <th width="15%"># of Invoices</th>
+                    <th width="15%">Subscription Days Left</th>
+                    <th width="15%">Join Date</th>
+                    <th width="15%">Last Used</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for company in company_report_list|dictsortreversed:'subscription_left' %}
+                    <tr>
+                        <td>{{ forloop.counter }}.</td>
+                        <td style="text-align: left;font-size: 15px;color: blue">{{ company.name }}</td>
+                        <td style="font-size: 14px;">{{ company.mobile }}</td>
+                        <td style="font-size: 18px;font-weight: 500">{{ company.invoices }}</td>
+                        <td style="font-size: 18px;font-weight: 500">{{ company.subscription_left }}</td>
+                        <td>{{ company.created }}</td>
+                        <td>{{ company.last_used }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
