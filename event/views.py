@@ -112,7 +112,7 @@ def change_event_participated_status(request):
             print('1')
             decoded = jwt.decode(access_token, '810810', algorithms=['HS256'])
             print('2')
-            mobile = decoded[access_token]
+            mobile = decoded['mobile']
             try:
                 user_instance = UserData.objects.get(mobile=mobile)
                 print(user_instance)
@@ -128,10 +128,14 @@ def change_event_participated_status(request):
                 try:
                     user_event_instance.participated = flag_participated
                     user_event_instance.save()
-                    if user_event_instance.participated==0:
+                    if user_event_instance.participated == 0:
+                        user_event_instance.participated = 1
+                        user_event_instance.save()
                         response_json["message"] = "You have Successfully Registered for this event"
                         response_json["success"] = True
                     else:
+                        user_event_instance.participated = 0
+                        user_event_instance.save()
                         response_json["message"] = "You have unregistered from this event"
                         response_json["success"] = True
                 except Exception as e:
