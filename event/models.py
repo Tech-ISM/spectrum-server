@@ -11,6 +11,7 @@ class EventData(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True)
     image = models.ImageField(upload_to='event/', default="/media/event/default.png")
     image_blur = models.ImageField(upload_to='event/', default="/media/event/default.png")
+    image_landscape = models.ImageField(upload_to='event/', default="/media/event/default.png")
     time = models.CharField(max_length=120, blank=True, null=True)
     date = models.CharField(max_length=255, blank=True, null=True)
     type = models.IntegerField(default=1, blank=True, null=True)

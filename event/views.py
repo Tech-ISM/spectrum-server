@@ -23,7 +23,7 @@ def get_events_list(request):
             response_json["event_list"] = []
             for o in EventData.objects.filter(day=int(day), round=1):
                 temp_json = {"event_id": int(o.id), "name": str(o.name),
-                             "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(o.image),
+                             "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(o.image_landscape),
                              }
                 response_json["event_list"].append(temp_json)
         except Exception as e:
@@ -122,7 +122,7 @@ def change_event_participated_status(request):
             try:
                 event_id = request.POST.get('event_id')
                 event_instance = EventData.objects.get(id=event_id)
-                user_event_instance = UserEventData.objects.get(event=event_instance,user=user_instance)
+                user_event_instance = UserEventData.objects.get(event=event_instance, user=user_instance)
                 flag_participated = request.POST.get('participated')
                 print (flag_participated)
                 try:
