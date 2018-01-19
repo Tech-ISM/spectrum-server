@@ -84,10 +84,13 @@ def verify_otp(request):
                 for u in user:
                     u.delete()
             try:
-                for o in EventData.objects.all():
-                    UserEventData.objects.create(user=UserData.objects.get(mobile=mobile),
-                                                 event=o,
-                                                 participated=0)
+                try:
+                    UserData.objects.get(mobile=mobile)
+                except Exception as e:
+                    for o in EventData.objects.all():
+                        UserEventData.objects.create(user=UserData.objects.get(mobile=mobile),
+                                                     event=o,
+                                                     participated=0)
                 response_json['success'] = True
                 response_json['message'] = 'Successful'
             except Exception as e:

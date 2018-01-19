@@ -126,16 +126,16 @@ def change_event_participated_status(request):
                 flag_participated = request.POST.get('participated')
                 print (flag_participated)
                 try:
-                    user_event_instance.participated = flag_participated
-                    user_event_instance.save()
                     if user_event_instance.participated == 0:
                         user_event_instance.participated = 1
                         user_event_instance.save()
+                        event_instance.save()
                         response_json["message"] = "You have Successfully Registered for this event"
                         response_json["success"] = True
                     else:
                         user_event_instance.participated = 0
                         user_event_instance.save()
+                        event_instance.save()
                         response_json["message"] = "You have unregistered from this event"
                         response_json["success"] = True
                 except Exception as e:
