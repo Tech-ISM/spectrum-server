@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>GST | Notification Panel</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/button/css/style.css" media="screen,projection"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109982357-1"></script>
+    <script>
+        var host = window.location.hostname;
+        if(host != "localhost" && host != "127.0.0.1"){
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-109982357-1');
+        }
+    </script>
+</head>
+<body style="overflow-y:auto;background-color: #F7E9BC">
+<div class="header" style="background-color: #654236">
+    <form method="GET" enctype="multipart/form-data">
+        <p style="background-color:#654236;float: left; width:100%;color:white;font-size: 2vmin; margin-top: 0;padding-right:1%;display: inline">
+            <span style="float: left;padding: 5px;"><img src="/media/media/welcome/GST_logo_1024x1024.png" style="height:12vmin;width:12vmin;"></span>
+        {% if user.is_authenticated %}
+            <span style="float: right;">
+                <a href="/adminpanel/home/"style="color: white">Home</a>
+                | Welcome <strong>{{ user.username }}</strong> |
+                <a href="/adminpanel/logout/" style="color: white">Logout</a></span>
+        {% endif %}
+        </p>
+    </form>
+</div>
+<div class="row">
+    <div class="col s12 m16 l6">
+        <div class="card">
+            <div class="card-content" style="padding: 10px;">
+
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m16 l6">
+        <div class="card">
+            <div class="card-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

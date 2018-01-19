@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>GST Invoice Maker Admin | {% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="icon" href="/media/temporary/logo.png" type="image/png">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/materialize/css/materialize.min.css" media="screen,projection"/>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="/static/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize/js/materialize.min.js"></script>
+    <!--Custom CSS for base html-->
+    <link type="text/css" rel="stylesheet" href="/static/web/base/css/style.css"/>
+    <!--Custom Script for base html-->
+    <script type="text/javascript" src="/static/adminpanel/base/js/script.js"></script>
+    <!--Custom Button CSS-->
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/button/css/style.css"/>
+    <!--Datatable CSS and JS-->
+    <script type="text/javascript" src="/static/datatable/datatable1.js"></script>
+    <script type="text/javascript" src="/static/datatable/datatable2.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/datatable/datatable3.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/datatable/datatable4.css"/>
+    <script type="text/javascript" src="/static/datatable/datatable5.js"></script>
+    <script type="text/javascript" src="/static/datatable/datatable6.js"></script>
+    <script type="text/javascript" src="/static/datatable/datatable7.js"></script>
+    <script type="text/javascript" src="/static/datatable/datatable8.js"></script>
+    <script type="text/javascript" src="/static/datatable/datatable9.js"></script>
+    <script type="text/javascript" src="/static/datatable/datatable10.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/datatable/datatable11.css"/>
+    {% block javascript %}
+    {% endblock %}
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <div class="navbar-fixed">
+        <nav role="navigation">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center hide-on-large-only"><h5>GST Invoice Maker</h5></a>
+                <ul class="left show-on-small">
+                    <li>
+                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                    </li>
+                </ul>
+                <ul class="left hide-on-med-and-down">
+                    <li><img src="{{ url_path }}/media/media/welcome/logo.png" alt="Logo"/></li>
+                    <li><h5>GST Invoice Maker</h5></li>
+                </ul>
+                <ul class="right hide-on-med-and-down show-on-large">
+                    <li><a href="/adminpanel/home/"><i class="material-icons">home</i></a></li>
+                    <li>Welcome {{ request.user }}</li>
+                    <li><a href="/adminpanel/logout/"><i class="material-icons right">power_settings_new</i>Logout</a></li>
+                </ul>
+                <ul class="right hide-on-large-only show-on-small">
+                    <li><a href="/adminpanel/logout/"><i class="material-icons right hide-on-small-only">power_settings_new</i>Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<ul id="slide-out" class="side-nav">
+    <li><a href="/adminpanel/home/"><i class="material-icons right">home</i>HOME</a></li>
+    <li><a href="/create__invoice/">Create Invoice</a></li>
+    <li><a href="#">Subscription</a></li>
+    <li><a href="#">Feedback</a></li>
+    <li><a href="">Expenses</a></li>
+    <li><a href="/adminpanel/logout/"><i class="material-icons right">power_settings_new</i>LOGOUT</a></li>
+</ul>
+<div id="left_container" class="hide-on-med-and-down">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div class="card z-depth-0">
+                <div class="card-content center" id="card_content_logo">
+                    <img src="/media/media/welcome/GST_512x512.png" alt="Logo"/>
+                    <h5>Welcome to GST Invoicing</h5>
+                </div>
+                <div class="card-content" id="card_content_list">
+                    <ul>
+                        <li><a href="/home/"><i class="material-icons left">play_arrow</i>Invoices</a></li>
+                        <li><a href="/buyers/"><i class="material-icons left">play_arrow</i>Buyer</a></li>
+                        <li><a href="/products/"><i class="material-icons left">play_arrow</i>Product</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="AJAXLoader">
+    <div id="circularG">
+        <div id="circularG_1" class="circularG"></div>
+        <div id="circularG_2" class="circularG"></div>
+        <div id="circularG_3" class="circularG"></div>
+        <div id="circularG_4" class="circularG"></div>
+        <div id="circularG_5" class="circularG"></div>
+        <div id="circularG_6" class="circularG"></div>
+        <div id="circularG_7" class="circularG"></div>
+        <div id="circularG_8" class="circularG"></div>
+    </div>
+</div>
+<div id="main">
+    {% block main_content %}
+    {% endblock %}
+</div>
+</body>
+</html>

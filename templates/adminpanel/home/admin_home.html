@@ -1,0 +1,98 @@
+{% extends 'adminpanel/base_logged.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/dashboard/css/style.css"/>
+{% endblock %}
+{% block javascript %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109982357-1"></script>
+    <script>
+        var host = window.location.hostname;
+        if(host != "localhost" && host != "127.0.0.1"){
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-109982357-1');
+        }
+    </script>
+{% endblock %}
+{% block main_content %}
+    <div class="row">
+        <div class="col s6 m4 l2" id="dashboard_col">
+            <div class="card" id="dashboard_card">
+                <div class="card-content center">
+                    <h1>{{ count_total_company }}</h1>
+                </div>
+                <div class="card-content white center">
+                    <p>Total Company</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l2" id="dashboard_col">
+            <div class="card" id="dashboard_card">
+                <div class="card-content center">
+                    <h1>{{ count_total_invoices }}</h1>
+                </div>
+                <div class="card-content white center">
+                    <p>Total Invoices</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l2" id="dashboard_col">
+            <div class="card" id="dashboard_card">
+                <div class="card-content center">
+                    <h1>{{ count_total_products }}</h1>
+                </div>
+                <div class="card-content white center">
+                    <p>Total Products</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l2" id="dashboard_col">
+            <div class="card" id="dashboard_card">
+                <div class="card-content center">
+                    <h1>{{ count_company_created_today }}</h1>
+                </div>
+                <div class="card-content white center">
+                    <p>Total Company Created Today</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s6 m4 l2" id="dashboard_col">
+            <div class="card" id="dashboard_card">
+                <div class="card-content center">
+                    <h1>{{ count_invoice_created_today }}</h1>
+                </div>
+                <div class="card-content white center">
+                    <p>Total Invoice Created Today</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6 l6 offset-l3 offset-m3">
+            <div class="card white lighten-10">
+                <div class="card-content">
+                    <table class="table responsive-table">
+                        <tbody>
+                        <tr>
+                            <td style="padding-left: 10%;font-size: 1.3em">Send Notification :</td>
+                            <td><a href="/adminpanel/notification/"><button class="btn" id="btnSubmit" type="submit" name="send_notification">Go</button></a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10%;font-size: 1.3em">Company Report :</td>
+                            <td><a href="/adminpanel/company_report/"><button class="btn">Go</button></a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 10%;font-size: 1.3em">Subscription Expiry Message :</td>
+                            <td><a href="/adminpanel/subscription_expiry_msg/"><button class="btn">Go</button></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

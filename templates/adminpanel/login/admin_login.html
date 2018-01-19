@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Admin Login Page</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize/js/materialize.min.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/base/css/style.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/static/adminpanel/button/css/style.css" media="screen,projection"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109982357-1"></script>
+    <script>
+        var host = window.location.hostname;
+        if(host != "localhost" && host != "127.0.0.1"){
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-109982357-1');
+        }
+    </script>
+</head>
+{% if invalid %}
+    <script type="text/javascript">alert("Wrong Username or Password. Please Try Again");</script>
+{% endif %}
+<body style="background-color: #F7E9BC">
+{#<body style="background-color: #654236">#}
+{#<body style="background-color: #EFC84A">#}
+<br>
+<br>
+<form id="login_form" action="." method="POST"  enctype="multipart/form-data">{% csrf_token %}
+    <div class="row">
+        <div class="col s12 m3"></div>
+        <div class="col s12 m6">
+            <div class="card white" style="border-radius: 10px">
+                <br>
+                <center><img src="/media/media/welcome/GST_512x512.png" height="100px" width="100px"></center>
+                <span class="card-title white-text" ><h4 style="font-size: 3.5vmin;background-color: #654337;padding: 0.3em;"><center>GST Invoice Server Login </center></h4></span>
+                <div class="row">
+                    <div class="input-field col s2"></div><div class="input-field col s8">
+                    <input  name="username" id="username" type="text" class="validate" required>
+                    <label for="username" >User Name</label>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s2"></div><div class="input-field col s8">
+                    <input id="password" name="password" type="password" class="validate" required>
+                    <label for="password" >Password</label>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4"></div>
+                    <div class="input-field col s4">
+                        <button class="btn waves-effect waves-red" id="btnSubmit" type="submit" name="action">Login
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
