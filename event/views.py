@@ -126,7 +126,7 @@ def change_event_participated_status(request):
                 flag_participated = request.POST.get('participated')
                 print (flag_participated)
                 try:
-                    if user_event_instance.participated == 0:
+                    if flag_participated == 0:
                         user_event_instance.participated = 1
                         user_event_instance.save()
                         event_instance.save()
