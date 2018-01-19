@@ -23,7 +23,7 @@ def notification_list(request):
                 temp_json['title'] = obj.notification_title
                 temp_json['message'] = obj.notification_message
                 temp_json['date'] = obj.notification_date
-                temp_json['time'] = obj.notification_date
+                temp_json['time'] = obj.notification_time
                 temp_json['event_id'] = int(obj.notification_event_id)
                 response_json['notification_list'].append(temp_json)
             print (response_json)

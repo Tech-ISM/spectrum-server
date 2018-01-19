@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3d669d8-e744-480d-88bd-c104282e86e7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/admin.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/apps.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/migrations/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/models.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notification/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/notifications.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/adminpanel/base_logged.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/adminpanel/company_report.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/adminpanel/home/admin_home.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/adminpanel/login/admin_login.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/adminpanel/notification.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/adminpanel/subs_expiry_msg.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/spectrum/settings.py" afterPath="$PROJECT_DIR$/spectrum/settings.py" />
-      <change beforePath="$PROJECT_DIR$/spectrum/urls.py" afterPath="$PROJECT_DIR$/spectrum/urls.py" />
+      <change beforePath="$PROJECT_DIR$/notification/views.py" afterPath="$PROJECT_DIR$/notification/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notification/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="46" column="36" lean-forward="true" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+            <state relative-caret-position="154">
+              <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="34" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -89,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spectrum/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="409">
+              <caret line="32" column="47" lean-forward="true" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
               <folding>
                 <element signature="e#697#729#0" expanded="true" />
               </folding>
@@ -145,8 +130,8 @@
         <option value="$PROJECT_DIR$/notification/models.py" />
         <option value="$PROJECT_DIR$/spectrum/urls.py" />
         <option value="$PROJECT_DIR$/notifications.py" />
-        <option value="$PROJECT_DIR$/notification/views.py" />
         <option value="$PROJECT_DIR$/spectrum/settings.py" />
+        <option value="$PROJECT_DIR$/notification/views.py" />
       </list>
     </option>
   </component>
@@ -158,7 +143,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2732" />
-    <option name="y" value="-772" />
+    <option name="y" value="-4" />
     <option name="width" value="1366" />
     <option name="height" value="772" />
   </component>
@@ -505,7 +490,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2732" y="-772" width="1366" height="772" extended-state="6" />
+    <frame x="2732" y="-4" width="1366" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -688,16 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notification/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="46" column="36" lean-forward="true" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/adminpanel/home/admin_home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -732,10 +708,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spectrum/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="409">
+          <caret line="32" column="47" lean-forward="true" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
           <folding>
             <element signature="e#697#729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notification/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
