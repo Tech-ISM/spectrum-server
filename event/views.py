@@ -21,7 +21,7 @@ def get_events_list(request):
             response_json["success"] = True
             response_json["message"] = " Event list Received "
             response_json["event_list"] = []
-            for o in EventData.objects.filter(day=int(day)):
+            for o in EventData.objects.filter(day=int(day), round=1):
                 temp_json = {"event_id": int(o.id), "name": str(o.name),
                              "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(o.image),
                              }
@@ -47,6 +47,7 @@ def get_events_details(request):
             event_instance = EventData.objects.get(id=event_id)
             response_json["name"] = event_instance.name
             response_json["image"] = request.scheme + '://' + request.get_host() + '/media/' + str(event_instance.image)
+            response_json["image_blur"] = request.scheme + '://' + request.get_host() + '/media/' + str(event_instance.image_blur)
             response_json["time"] = event_instance.time
             response_json["date"] = event_instance.date
             response_json["type"] = event_instance.type
@@ -54,6 +55,7 @@ def get_events_details(request):
             response_json["day"] = event_instance.day
             response_json["attendees"] = event_instance.attendees
             response_json["description"] = event_instance.description
+            response_json["prize_description"] = event_instance.prize_description
             response_json["message"] = "Event Details Received"
             response_json["success"] = True
         except Exception as e:
