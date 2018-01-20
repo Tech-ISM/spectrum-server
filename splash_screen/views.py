@@ -2,6 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from customs.models import KeysData
+from register.models import UserData
 
 
 @csrf_exempt
@@ -11,17 +12,18 @@ def splash_screen(request):
     if request.method == 'GET':
         try:
             access_token1 = request.GET.get('access_token')
+
             fcm = request.GET.get('fcm')
             print(fcm)
 
-            # if access_token == 'dsnbsmndjbmnx23' :
-            #     print('b')
-            #     p,created = FcmData.objects.get_or_create(fcm=fcm)
-            #     print ('aman---------')
-            #     if created:
-            #         response_json['message'] = "fcm added"
-            #     if not created:
-            #         response_json['message'] = "fcm already exsists"
+            if UserData.objects.filter(mobile=mobile):
+                print('b')
+                p,created = FcmData.objects.get_or_create(fcm=fcm)
+                print ('aman---------')
+                if created:
+                    response_json['message'] = "fcm added"
+                if not created:
+                    response_json['message'] = "fcm already exsists"
 
             # json = jwt.decode(str(access_token), keys.KEY_ACCESS_TOKEN_ENCRYPTION, algorithms=['HS256'])
             # mobile = str(json['mobile'])

@@ -84,7 +84,7 @@ def verify_otp(request):
                 for u in user:
                     u.delete()
             try:
-                if not UserData.objects.filter(mobile=mobile).exists():
+                if not UserEventData.objects.filter(user=UserData.objects.get(mobile=mobile)).exists():
                     for o in EventData.objects.all():
                         user_event_instance = UserEventData.objects.create(user=UserData.objects.get(mobile=mobile),
                                                                            event=o,
