@@ -43,13 +43,10 @@ def admin_notification(request):
         if request.method == "GET":
             response_json = {}
             print ("===============Inside admin_notification GET method===============")
-            return render(request, 'adminpanel/notification.html', response_json)
-        if request.method == "POST":
-            print ("===============Inside admin_notification POST method===============")
-            for x, y in request.POST.items():
+            for x, y in request.GET.items():
                 print("key,value", x, ":", y)
-            title = str(request.POST.get('title'))
-            message = str(request.POST.get('message'))
+            title = str(request.GET.get('title'))
+            message = str(request.GET.get('message'))
             notifications = NotificationData(notification_title=str(title),
                                              notification_message=str(message))
             notifications.save()
