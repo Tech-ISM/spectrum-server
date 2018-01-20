@@ -54,18 +54,13 @@ def admin_notification(request):
                                              notification_message=str(message))
             notifications.save()
             print ("Notification row created")
-
-            # -------------------------------------------------
-            # First delete duplicate entries in FcmData table
-            for row in UserData.objects.all():
-                if UserData.objects.filter(fcm=row.fcm).count() > 1:
-                    row.delete()
-            # -------------------------------------------------
-
+            # for row in UserData.objects.all():
+            #     if UserData.objects.filter(fcm=row.fcm).count() > 1:
+            #         row.delete()
             fcm_set = set()
-            for fcm in UserData.objects.all():
+            for user in UserData.objects.all():
                 try:
-                    fcm_set.add(fcm.fcm)
+                    fcm_set.add(user.fcm)
                 except Exception as e:
                     print ("Exception " + str(e))
             print (fcm_set)
