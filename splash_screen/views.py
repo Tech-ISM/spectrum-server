@@ -16,7 +16,6 @@ def splash_screen(request):
             print (access_token1)
             fcm = request.GET.get('fcm')
             print(fcm)
-
             # json = jwt.decode(str(access_token1), '810810', algorithms='HS256')
             # mobile = json['mobile']
             # if UserData.objects.filter(mobile=mobile):
@@ -27,14 +26,16 @@ def splash_screen(request):
             #         response_json['message'] = "fcm added"
             #     if not created:
             #         response_json['message'] = "fcm already exsists"
-
-            json = jwt.decode(str(access_token1), '810810', algorithms=['HS256'])
-            mobile = str(json['mobile'])
-            print (mobile)
-            user_instance = UserData.objects.get(mobile= mobile)
-            user_instance.fcm=fcm
-            user_instance.save()
-            response_json['message'] = 'fcm linked to user'
+            try:
+                json = jwt.decode(str(access_token1), '810810', algorithms=['HS256'])
+                mobile = str(json['mobile'])
+                print (mobile)
+                user_instance = UserData.objects.get(mobile= mobile)
+                user_instance.fcm=fcm
+                user_instance.save()
+                response_json['message'] = 'fcm linked to user'
+            except Exception as e:
+                print(str(e))
             print("234")
             version = int(KeysData.objects.get(key='version').value)
             print(version)
