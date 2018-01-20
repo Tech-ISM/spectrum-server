@@ -45,8 +45,12 @@ def admin_notification(request):
         for x, y in request.GET.items():
             print("key,value", x, ":", y)
         title = str(request.GET.get('title'))
+        time = str(request.GET.get('time'))
+        date = str(request.GET.get('date'))
         message = str(request.GET.get('message'))
         notifications = NotificationData(notification_title=str(title),
+                                         notification_date=str(date),
+                                         notification_time=str(time),
                                          notification_message=str(message))
         notifications.save()
         print ("Notification row created")
