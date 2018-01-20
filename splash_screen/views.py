@@ -1,3 +1,4 @@
+import jwt
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -12,27 +13,28 @@ def splash_screen(request):
     if request.method == 'GET':
         try:
             access_token1 = request.GET.get('access_token')
-
+            print (access_token1)
             fcm = request.GET.get('fcm')
             print(fcm)
 
-            if UserData.objects.filter(mobile=mobile):
-                print('b')
-                p,created = FcmData.objects.get_or_create(fcm=fcm)
-                print ('aman---------')
-                if created:
-                    response_json['message'] = "fcm added"
-                if not created:
-                    response_json['message'] = "fcm already exsists"
+            # json = jwt.decode(str(access_token1), '810810', algorithms='HS256')
+            # mobile = json['mobile']
+            # if UserData.objects.filter(mobile=mobile):
+            #     print('b')
+            #     p,created = FcmData.objects.get_or_create(fcm=fcm)
+            #     print ('aman---------')
+            #     if created:
+            #         response_json['message'] = "fcm added"
+            #     if not created:
+            #         response_json['message'] = "fcm already exsists"
 
-            # json = jwt.decode(str(access_token), keys.KEY_ACCESS_TOKEN_ENCRYPTION, algorithms=['HS256'])
-            # mobile = str(json['mobile'])
-            # company = CompanyData.objects.get(mobile= mobile)
-            # fcm_instance= FcmData.objects.get(company=company)
-            # fcm_instance.fcm=fcm
-            # fcm_instance.save()
-            # response_json['message'] = 'fcm linked to user'
-
+            json = jwt.decode(str(access_token1), '810810', algorithms=['HS256'])
+            mobile = str(json['mobile'])
+            print (mobile)
+            user_instance = UserData.objects.get(mobile= mobile)
+            user_instance.fcm=fcm
+            user_instance.save()
+            response_json['message'] = 'fcm linked to user'
             print("234")
             version = int(KeysData.objects.get(key='version').value)
             print(version)
