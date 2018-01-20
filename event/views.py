@@ -123,10 +123,10 @@ def change_event_participated_status(request):
                 event_id = request.POST.get('event_id')
                 event_instance = EventData.objects.get(id=event_id)
                 user_event_instance = UserEventData.objects.get(event=event_instance, user=user_instance)
-                flag_participated = request.POST.get('participated')
+                flag_participated = int(request.POST.get('participated'))
                 print (flag_participated)
                 try:
-                    if flag_participated == 0:
+                    if int(user_event_instance.participated) == 0:
                         user_event_instance.participated = 1
                         user_event_instance.save()
                         event_instance.save()
