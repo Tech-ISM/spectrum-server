@@ -42,7 +42,7 @@ def send_otp(request):
                     otp_instance.otp = otp
                     otp_instance.save()
                 except Exception as e:
-                    print (e)
+                    print(e)
                     OtpData.objects.create(mobile=str(mobile), otp=int(otp))
             except Exception as e:
                 OtpData.objects.create(mobile=str(mobile), otp=int(otp))
@@ -84,19 +84,18 @@ def verify_otp(request):
                 for u in user:
                     u.delete()
             try:
-                try:
-                    UserData.objects.get(mobile=mobile)
-                except Exception as e:
+                if not UserData.objects.filter(mobile=mobile).exists():
                     for o in EventData.objects.all():
-                        UserEventData.objects.create(user=UserData.objects.get(mobile=mobile),
-                                                     event=o,
-                                                     participated=0)
+                        user_event_instance = UserEventData.objects.create(user=UserData.objects.get(mobile=mobile),
+                                                                           event=o,
+                                                                           participated=0)
+                        user_event_instance.save()
                 response_json['success'] = True
                 response_json['message'] = 'Successful'
             except Exception as e:
                 print(str(e))
                 response_json['success'] = False
-                response_json['message'] = 'Something went wrong'+str(e)
+                response_json['message'] = 'Something went wrong' + str(e)
         else:
             response_json['success'] = False
             response_json['message'] = 'Invalid Otp'

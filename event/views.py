@@ -22,8 +22,9 @@ def get_events_list(request):
             response_json["message"] = " Event list Received "
             response_json["event_list"] = []
             for o in EventData.objects.filter(day=int(day), round=1):
-                temp_json = {"event_id": int(o.id), "name": str(o.name),
-                             "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(o.image_landscape),
+                temp_json = {"event_id": int(o.id), "name": str(o.name), "time": str(o.time),
+                             "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(
+                                 o.image),
                              }
                 response_json["event_list"].append(temp_json)
         except Exception as e:
@@ -47,7 +48,8 @@ def get_events_details(request):
             event_instance = EventData.objects.get(id=event_id)
             response_json["name"] = event_instance.name
             response_json["image"] = request.scheme + '://' + request.get_host() + '/media/' + str(event_instance.image)
-            response_json["image_blur"] = request.scheme + '://' + request.get_host() + '/media/' + str(event_instance.image_blur)
+            response_json["image_blur"] = request.scheme + '://' + request.get_host() + '/media/' + str(
+                event_instance.image_blur)
             response_json["time"] = event_instance.time
             response_json["date"] = event_instance.date
             response_json["type"] = event_instance.type
@@ -95,7 +97,7 @@ def get_user_events_list(request):
         except Exception as e:
             print("e@usereventlist", e)
             response_json["success"] = False
-            response_json["message"] = " user data not found"+str(e)
+            response_json["message"] = " user data not found" + str(e)
     else:
         response_json['success'] = False
         response_json['message'] = "not get method"
@@ -118,7 +120,7 @@ def change_event_participated_status(request):
                 print(user_instance)
             except Exception as e:
                 response_json["success"] = False
-                response_json["message"] = "Something went wrong"+str(e)
+                response_json["message"] = "Something went wrong" + str(e)
             try:
                 event_id = request.POST.get('event_id')
                 event_instance = EventData.objects.get(id=event_id)
@@ -140,7 +142,7 @@ def change_event_participated_status(request):
                         response_json["success"] = True
                 except Exception as e:
                     print(e)
-                    response_json["message"] = "Some Error Occurred"+str(e)
+                    response_json["message"] = "Some Error Occurred" + str(e)
                     response_json["success"] = False
             except Exception as e:
                 print(e)
