@@ -39,32 +39,30 @@ def notification_list(request):
 
 @csrf_exempt
 def admin_notification(request):
-    if request.user.is_authenticated():
-        if request.method == "GET":
-            response_json = {}
-            print ("===============Inside admin_notification GET method===============")
-            for x, y in request.GET.items():
-                print("key,value", x, ":", y)
-            title = str(request.GET.get('title'))
-            message = str(request.GET.get('message'))
-            notifications = NotificationData(notification_title=str(title),
-                                             notification_message=str(message))
-            notifications.save()
-            print ("Notification row created")
-            # for row in UserData.objects.all():
-            #     if UserData.objects.filter(fcm=row.fcm).count() > 1:
-            #         row.delete()
-            fcm_set = set()
-            for user in UserData.objects.all():
-                try:
-                    fcm_set.add(user.fcm)
-                except Exception as e:
-                    print ("Exception " + str(e))
-            print (fcm_set)
-            for item in fcm_set:
-                try:
-                    send_notification(item, notifications.notification_message)
-                except Exception as e:
-                    print("Exception....", e)
-            return HttpResponseRedirect('/adminpanel/notification/')
-    return HttpResponseRedirect("/")
+    if request.method == "GET":
+        response_json = {}
+        print ("===============Inside admin_notification GET method===============")
+        for x, y in request.GET.items():
+            print("key,value", x, ":", y)
+        title = str(request.GET.get('title'))
+        message = str(request.GET.get('message'))
+        notifications = NotificationData(notification_title=str(title),
+                                         notification_message=str(message))
+        notifications.save()
+        print ("Notification row created")
+        # for row in UserData.objects.all():
+        #     if UserData.objects.filter(fcm=row.fcm).count() > 1:
+        #         row.delete()
+        fcm_set = set()
+        for user in UserData.objects.all():
+            try:
+                fcm_set.add(user.fcm)
+            except Exception as e:
+                print ("Exception " + str(e))
+        print (fcm_set)
+        for item in fcm_set:
+            try:
+                send_notification(item, notifications.notification_message)
+            except Exception as e:
+                print("Exception....", e)
+        return HttpResponseRedirect('/adminpanel/notification/')
