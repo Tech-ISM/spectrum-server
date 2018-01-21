@@ -71,7 +71,7 @@ def update_fcm(request):
         try:
             access_token1 = request.POST.get('access_token')
             print (access_token1)
-            fcm = request.GET.get('fcm')
+            fcm = request.POST.get('fcm')
             print(fcm)
             try:
                 json = jwt.decode(str(access_token1), '810810', algorithms=['HS256'])
