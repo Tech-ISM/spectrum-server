@@ -63,7 +63,7 @@ def get_events_details(request):
             response_json["prize_description"] = event_instance.prize_description
             response_json["oragniser_list"] = []
             for o in OrganiserData.objects.filter(event=event_instance):
-                temp_json = {"name": int(o.name), "mobile": str(o.mobile)
+                temp_json = {"name": str(o.name), "mobile": str(o.mobile)
                              }
                 response_json["oragniser_list"].append(temp_json)
             response_json["message"] = "Event Details Received"
