@@ -96,6 +96,7 @@ def get_user_events_list(request):
                 user_instance = UserData.objects.get(mobile=mobile)
 
                 for o in UserEventData.objects.filter(user=user_instance):
+                    print(o.event.round)
                     if o.event.round == 1:
                         temp_json = {"id": int(o.event.id), "type": int(o.event.type),
                                      "name": str(o.event.name), "participated": int(o.participated),
