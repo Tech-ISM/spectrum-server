@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
-from event.models import EventData, UserEventData
+from event.models import EventData, UserEventData, OrganiserData
 from register.models import UserData
 
 
@@ -47,6 +47,8 @@ def get_events_details(request):
             event_id = int(request.GET.get("event_id"))
             event_instance = EventData.objects.get(id=event_id)
             response_json["name"] = event_instance.name
+            response_json["rules"] = event_instance.rules
+            response_json["round_name"] = event_instance.round_name
             response_json["image"] = request.scheme + '://' + request.get_host() + '/media/' + str(event_instance.image)
             response_json["image_blur"] = request.scheme + '://' + request.get_host() + '/media/' + str(
                 event_instance.image_blur)
@@ -58,6 +60,11 @@ def get_events_details(request):
             response_json["attendees"] = event_instance.attendees
             response_json["description"] = event_instance.description
             response_json["prize_description"] = event_instance.prize_description
+            response_json["oragniser_list"] = []
+            for o in OrganiserData.objects.filter(event=event_instance):
+                temp_json = {"name": int(o.name), "mobile": str(o.mobile)
+                            }
+                response_json["oragniser_list"].append(temp_json)
             response_json["message"] = "Event Details Received"
             response_json["success"] = True
         except Exception as e:
@@ -130,6 +137,7 @@ def change_event_participated_status(request):
                 try:
                     if int(user_event_instance.participated) == 0:
                         user_event_instance.participated = 1
+                        event_instance.attendees += 1
                         user_event_instance.save()
                         event_instance.save()
                         response_json["message"] = "You have Successfully Registered for this event"
@@ -138,6 +146,7 @@ def change_event_participated_status(request):
                         user_event_instance.participated = 0
                         user_event_instance.save()
                         event_instance.save()
+                        event_instance.attendees -= 1
                         response_json["message"] = "You have unregistered from this event"
                         response_json["success"] = True
                 except Exception as e:
