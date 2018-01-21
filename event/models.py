@@ -20,7 +20,7 @@ class EventData(models.Model):
     location = models.CharField(max_length=120, blank=True, null=True)
     day = models.IntegerField(default=0, blank=True, null=True)
     attendees = models.IntegerField(default=0, blank=True, null=True)
-    description = models.CharField(max_length=120, blank=True, null=True)
+    description = models.CharField(max_length=500, blank=True, null=True)
     prize_description = models.CharField(max_length=120, blank=True, null=True)
     round = models.IntegerField(default=1, blank=True, null=True)
     facebook_url = models.CharField(max_length=255, blank=True, null=True)
