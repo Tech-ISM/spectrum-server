@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from event.models import EventData, UserEventData
+from event.models import EventData, UserEventData, OrganiserData
 
 
 class EventDataAdmin(admin.ModelAdmin):
@@ -22,4 +22,4 @@ class OrganiserDataAdmin(admin.ModelAdmin):
     list_display = ["name", "mobile", "created", "modified"]
 
 
-admin.site.register(UserEventData, UserEventDataAdmin)
+admin.site.register(OrganiserData, OrganiserDataAdmin)
