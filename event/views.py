@@ -21,8 +21,9 @@ def get_events_list(request):
             response_json["success"] = True
             response_json["message"] = " Event list Received "
             response_json["event_list"] = []
-            for o in EventData.objects.filter(day=int(day), round=1):
-                temp_json = {"event_id": int(o.id), "name": str(o.name), "time": str(o.time),"round_name":str(o.round_name),
+            for o in EventData.objects.filter(day=int(day)):
+                temp_json = {"event_id": int(o.id), "name": str(o.name), "time": str(o.time),
+                             "round_name": str(o.round_name),
                              "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(
                                  o.image),
                              }
@@ -63,7 +64,7 @@ def get_events_details(request):
             response_json["oragniser_list"] = []
             for o in OrganiserData.objects.filter(event=event_instance):
                 temp_json = {"name": int(o.name), "mobile": str(o.mobile)
-                            }
+                             }
                 response_json["oragniser_list"].append(temp_json)
             response_json["message"] = "Event Details Received"
             response_json["success"] = True
@@ -93,11 +94,13 @@ def get_user_events_list(request):
             response_json["event_list"] = []
             try:
                 user_instance = UserData.objects.get(mobile=mobile)
+
                 for o in UserEventData.objects.filter(user=user_instance):
-                    temp_json = {"id": int(o.event.id), "type": int(o.event.type),
-                                 "name": str(o.event.name), "participated": int(o.participated),
-                                 }
-                    response_json["event_list"].append(temp_json)
+                    if o.event.round == 1:
+                        temp_json = {"id": int(o.event.id), "type": int(o.event.type),
+                                     "name": str(o.event.name), "participated": int(o.participated),
+                                     }
+                        response_json["event_list"].append(temp_json)
             except Exception as e:
                 response_json["success"] = False
                 response_json["message"] = "Something went wrong" + str(e)
