@@ -22,7 +22,7 @@ def get_events_list(request):
             response_json["message"] = " Event list Received "
             response_json["event_list"] = []
             for o in EventData.objects.filter(day=int(day), round=1):
-                temp_json = {"event_id": int(o.id), "name": str(o.name), "time": str(o.time),
+                temp_json = {"event_id": int(o.id), "name": str(o.name), "time": str(o.time),"round_name":str(o.round_name),
                              "image_url": request.scheme + '://' + request.get_host() + '/media/' + str(
                                  o.image),
                              }
