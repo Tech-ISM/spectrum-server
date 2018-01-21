@@ -23,13 +23,14 @@ from event.views import get_events_list, change_event_participated_status, get_u
 from notification.views import notification_list, admin_notification
 from notifications import send_notification
 from otp.views import send_otp, verify_otp
-from splash_screen.views import splash_screen
+from splash_screen.views import splash_screen, update_fcm
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^create_user/$', send_otp),
     url(r'^verify_otp/$', verify_otp),
     url(r'^is_update_available/$', splash_screen),
+    url(r'^update_fcm/$', update_fcm),
     url(r'^get_events_list/$', get_events_list),
     url(r'^get_notification_list/$', notification_list),
     url(r'^get_events_details/$', get_events_details),

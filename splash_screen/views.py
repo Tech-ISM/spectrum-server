@@ -61,3 +61,38 @@ def splash_screen(request):
     print("================== Close splash screen =====================")
     print(response_json)
     return JsonResponse(response_json)
+
+
+@csrf_exempt
+def update_fcm(request):
+    print("================== Inside Update FCM =====================")
+    response_json = {}
+    if request.method == 'POST':
+        try:
+            access_token1 = request.POST.get('access_token')
+            print (access_token1)
+            fcm = request.GET.get('fcm')
+            print(fcm)
+            try:
+                json = jwt.decode(str(access_token1), '810810', algorithms=['HS256'])
+                mobile = str(json['mobile'])
+                print (mobile)
+                user_instance = UserData.objects.get(mobile= mobile)
+                user_instance.fcm = fcm
+                user_instance.save()
+                response_json['message'] = 'fcm linked to user'
+            except Exception as e:
+                print(str(e))
+            print("234")
+            response_json['success'] = True
+            response_json['message'] = "FCM successfully updated"
+        except Exception as e:
+            print("Exception Error", str(e))
+            response_json['success'] = False
+            response_json['message'] = "Something went Wrong" + str(e)
+    else:
+        response_json['success'] = False
+        response_json['message'] = "Not post method"
+    print("================== Close Update FCM =====================")
+    print(response_json)
+    return JsonResponse(response_json)
