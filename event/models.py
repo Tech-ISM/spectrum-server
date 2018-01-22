@@ -10,7 +10,7 @@ from register.models import UserData
 class EventData(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True)
     round_name = models.CharField(max_length=120, blank=True, null=True)
-    rules = models.CharField(max_length=120, blank=True, null=True)
+    rules = models.CharField(max_length=500, blank=True, null=True)
     image = models.ImageField(upload_to='event/', default="/media/event/default.png")
     image_blur = models.ImageField(upload_to='event/', default="/media/event/default.png")
     image_landscape = models.ImageField(upload_to='event/', default="/media/event/default.png")
