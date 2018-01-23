@@ -23,7 +23,7 @@ def send_otp(request):
             print(name)
             print(mobile)
             otp = random.randint(1000, 9999)
-            msg = str(otp)+'is the OTP for Spectrum App.'
+            msg = str(otp)+' is the OTP for Spectrum App.'
             send_sms(mobile, msg)
             print('Otp Sent')
             try:
