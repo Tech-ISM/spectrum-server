@@ -152,8 +152,10 @@ def change_event_participated_status(request):
                     else:
                         user_event_instance.participated = 0
                         event_instance.attendees = event_instance.attendees-1
+                        print("before:" + str(user_event_instance.participated))
                         event_instance.save()
                         user_event_instance.save()
+                        print("after:" + str(user_event_instance.participated))
                         response_json["message"] = "You have unregistered from this event"
                         print(response_json["message"])
                         response_json["success"] = True
