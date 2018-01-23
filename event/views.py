@@ -148,9 +148,9 @@ def change_event_participated_status(request):
                         response_json["success"] = True
                     else:
                         user_event_instance.participated = 0
+                        event_instance.attendees = event_instance.attendees-1
                         user_event_instance.save()
                         event_instance.save()
-                        event_instance.attendees -= 1
                         response_json["message"] = "You have unregistered from this event"
                         response_json["success"] = True
                 except Exception as e:
