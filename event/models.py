@@ -10,7 +10,7 @@ from register.models import UserData
 class EventData(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True)
     round_name = models.CharField(max_length=120, blank=True, null=True)
-    rules = models.CharField(max_length=800, blank=True, null=True)
+    # rules = models.CharField(max_length=800, blank=True, null=True)
     image = models.ImageField(upload_to='event/', default="/media/event/default.png")
     image_blur = models.ImageField(upload_to='event/', default="/media/event/default.png")
     image_landscape = models.ImageField(upload_to='event/', default="/media/event/default.png")
@@ -20,10 +20,12 @@ class EventData(models.Model):
     location = models.CharField(max_length=120, blank=True, null=True)
     day = models.IntegerField(default=0, blank=True, null=True)
     attendees = models.IntegerField(default=0, blank=True, null=True)
-    description = models.CharField(max_length=800, blank=True, null=True)
+    # description = models.CharField(max_length=800, blank=True, null=True)
     prize_description = models.CharField(max_length=120, blank=True, null=True)
     round = models.IntegerField(default=1, blank=True, null=True)
     facebook_url = models.CharField(max_length=255, blank=True, null=True)
+    rules = models.TextField(max_length=1000, null=True, blank=True, default="")
+    description = models.TextField(max_length=1000, null=True, blank=True, default="")
     modified = models.DateTimeField(auto_now=True, auto_now_add=False)
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
 
